@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
+echo -e "\033[34mnpm-proxy.sh\033[0m"
 
-# Array of package managers and their lock files
+# Array if package managers and their lock files
 PACKAGE_MANAGERS=("npm:package-lock.json" "pnpm:pnpm-lock.yaml" "yarn:yarn.lock" "bun:bun.lockb")
 
 # A function to detect the package manager based on lock files
@@ -12,7 +13,7 @@ detect_package_manager() {
             return
         fi
     done
-    echo "" # Return empty string if no lock file is found
+    echo "npm" # Default to npm if no lock file is found
 }
 
 # Function to display usage
@@ -30,21 +31,9 @@ fi
 # Detect the package manager
 PACKAGE_MANAGER=$(detect_package_manager)
 
-if [ -z "$PACKAGE_MANAGER" ]; then
-    echo "No package manager lock file detected."
-    echo "Please choose a package manager:"
-    select choice in "${PACKAGE_MANAGERS[@]%%:*}"; do
-        if [[ -n "$choice" ]]; then
-            PACKAGE_MANAGER="$choice"
-            break
-        else
-            echo "Invalid choice. Aborting."
-            exit 1
-        fi
-    done
-fi
+echo -e "\033[90mUsing package manager: $PACKAGE_MANAGER\033[0m"
 
-echo "Using package manager: $PACKAGE_MANAGER"
+echo ""
 
 # Proxy the command to the detected package manager
 "$PACKAGE_MANAGER" "$@"
