@@ -17,7 +17,7 @@ setup() {
     export PATH="$TMPDIR/bin:$PATH"
 
     # Path to the npm-proxy.sh script
-    SCRIPT_PATH="$(pwd)/../npm-proxy.sh"
+    SCRIPT_PATH="$(pwd)/npm-proxy.sh"
     chmod +x "$SCRIPT_PATH"
 }
 
