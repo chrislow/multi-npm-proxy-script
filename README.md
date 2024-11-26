@@ -15,5 +15,5 @@ curl -O https://raw.githubusercontent.com/chrislow/multi-npm-proxy-script/main/n
 2. Add the script to your zsh or bash profile:
 
 ```bash
-echo "alias npm='~/path/to/npm-proxy.sh'" >> ~/.zshrc
+echo "alias npmx='~/path/to/npm-proxy.sh'" >> ~/.zshrc
 ```
